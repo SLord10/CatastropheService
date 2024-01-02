@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catastrophe-deployment
+  labels:
+    app: catastrophe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catastrophe
+  template:
+    metadata:
+      name: catastrophe
+      labels:
+        app: catastrophe
+    spec:
+      containers:
+        - name: catastrophe-container
+          image: slord11/catastrophe
+          ports:
+            - containerPort: 8085
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catastrophe-service
+spec:
+  selector:
+    app: catastrophe
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8085

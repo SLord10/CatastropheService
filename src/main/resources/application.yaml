@@ -1,0 +1,14 @@
+server:
+  port: 8085
+spring:
+  application:
+        name: catastrophe-service
+  datasource:
+      url: jdbc:mysql://mysqldb:3306/disaster
+      username: root
+      password: 12345
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
