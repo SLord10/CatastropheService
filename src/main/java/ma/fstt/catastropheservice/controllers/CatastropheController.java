@@ -80,7 +80,7 @@ public class CatastropheController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Map<String, Object>> deleteCatastropheById(Long id){
+    public ResponseEntity<Map<String, Object>> deleteCatastropheById(@PathVariable("id") Long id){
         catastropheService.deleteCatastropheById(id);
         Map<String, Object> response = new HashMap<>();
         response.put("message", "deleted");
