@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("catastrophe")
+@CrossOrigin
 public class CatastropheController {
 
     private final CatastropheService catastropheService;
@@ -55,7 +56,7 @@ public class CatastropheController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteCatastropheById(Long id){
+    public void deleteCatastropheById(@PathVariable("id") Long id){
         catastropheService.deleteCatastropheById(id);
     }
 
